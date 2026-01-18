@@ -139,7 +139,6 @@ function App() {
                     </div>
                 ) : (
                     <button className="order-btn" onClick={() => setIsOrderOpen(true)}>
-                        <span style={{ fontSize: '1.25rem' }}>📋</span>
                         <span>{t.myOrder}</span>
                         <span className="order-badge">{totalItemCount}</span>
                     </button>

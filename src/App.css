@@ -5,7 +5,7 @@
 
 .restaurant-header {
     text-align: center;
-    padding: var(--space-lg) var(--space-md) var(--space-md);
+    padding: var(--space-md) var(--space-md) var(--space-sm);
     background: linear-gradient(135deg, var(--bg-accent), var(--bg-secondary));
     border-bottom: 1px solid var(--border-light);
 }
@@ -15,7 +15,7 @@
     font-size: 1.875rem;
     font-weight: 700;
     color: var(--accent-primary);
-    margin: 0 0 var(--space-sm) 0;
+    margin: 0 0 var(--space-xs) 0;
     letter-spacing: -0.02em;
 }
 
@@ -31,6 +31,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: var(--space-md);
+    padding-bottom: 0;
 }
 
 .menu-grid {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { OrderItem, Translations } from '../types';
 import './MyOrder.css';
 
@@ -24,9 +24,24 @@ const MyOrder: React.FC<MyOrderProps> = ({
     const totalPrice = items.reduce((sum, item) => sum + (item.menuItem.price * item.quantity), 0);
     const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
+    // Prevent body scroll when panel is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+
+        // Cleanup on unmount
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isOpen]);
+
+
     return (
         <>
-            {isOpen && <div className="order-overlay" onClick={onClose} />}
+            <div className={`order-panel-backdrop ${isOpen ? 'open' : ''}`} onClick={onClose} />
 
             <div className={`my-order ${isOpen ? 'open' : ''}`}>
                 <div className="order-header">
@@ -38,9 +53,6 @@ const MyOrder: React.FC<MyOrderProps> = ({
                             </span>
                         )}
                     </div>
-                    <button className="close-btn" onClick={onClose} aria-label="Close order">
-                        ✕
-                    </button>
                 </div>
 
                 <div className="order-content">
@@ -81,14 +93,14 @@ const MyOrder: React.FC<MyOrderProps> = ({
                             </div>
 
                             <div className="order-footer">
-                                <div className="order-total">
-                                    <span className="total-label">{t.total}</span>
-                                    <span className="total-amount">{totalPrice.toFixed(2)} €</span>
+                                <div className="footer-actions">
+                                    <div className="order-total">
+                                        <span className="total-amount">{totalPrice.toFixed(2)} €</span>
+                                    </div>
+                                    <button className="clear-all-btn" onClick={onClearAll}>
+                                        {t.clearAll}
+                                    </button>
                                 </div>
-
-                                <button className="clear-all-btn" onClick={onClearAll}>
-                                    {t.clearAll}
-                                </button>
 
                                 <div className="order-note">
                                     <p>💡 <strong>{t.orderNote.split('?')[0]}?</strong> {t.orderNote.split('?')[1]}</p>
