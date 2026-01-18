@@ -1,0 +1,171 @@
+.menu-card {
+    position: relative;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.menu-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.menu-card.in-order {
+    border-color: var(--accent-primary);
+    background: linear-gradient(to bottom right, var(--bg-secondary), var(--accent-light));
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -10px;
+    right: var(--space-md);
+    background: linear-gradient(135deg, #FCD34D, #F59E0B);
+    color: #78350F;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.menu-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.menu-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-md);
+}
+
+.menu-item-name {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    flex: 1;
+}
+
+.menu-item-price {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    white-space: nowrap;
+}
+
+.menu-item-description {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.menu-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+}
+
+.menu-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    flex: 1;
+}
+
+.spicy-indicator {
+    font-size: 0.875rem;
+    line-height: 1;
+}
+
+.dietary-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.dietary-tag {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    padding: 2px 8px;
+    background: var(--success-light);
+    color: #065F46;
+    border-radius: var(--radius-sm);
+    text-transform: capitalize;
+}
+
+.add-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: var(--space-sm) var(--space-lg);
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+    white-space: nowrap;
+}
+
+.add-btn:hover {
+    background: var(--accent-hover);
+    box-shadow: var(--shadow-md);
+    transform: scale(1.05);
+}
+
+.add-btn:active {
+    transform: scale(0.98);
+}
+
+.add-btn.added {
+    background: var(--success);
+}
+
+.add-btn.added:hover {
+    background: #059669;
+}
+
+.add-btn .plus,
+.add-btn .checkmark {
+    font-size: 1.125rem;
+    line-height: 1;
+}
+
+/* Pulse animation for newly added items */
+.menu-card.in-order {
+    animation: pulse 0.4s ease-in-out;
+}
+
+@media (max-width: 640px) {
+    .menu-card {
+        padding: var(--space-md);
+    }
+
+    .menu-item-name {
+        font-size: 1.125rem;
+    }
+
+    .add-btn {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 0.875rem;
+    }
+}
