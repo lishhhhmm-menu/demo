@@ -57,7 +57,7 @@ const MyOrder: React.FC<MyOrderProps> = ({
                                     <div key={item.menuItem.id} className="order-item">
                                         <h4 className="order-item-name">{t.menuItems[item.menuItem.name]}</h4>
                                         <div className="order-item-footer">
-                                            <span className="order-item-price">€{item.menuItem.price.toFixed(2)}</span>
+                                            <span className="order-item-price">{item.menuItem.price.toFixed(2)} €</span>
                                             <div className="order-qty-controls">
                                                 <button
                                                     className="order-qty-btn minus"
@@ -83,7 +83,7 @@ const MyOrder: React.FC<MyOrderProps> = ({
                             <div className="order-footer">
                                 <div className="order-total">
                                     <span className="total-label">{t.total}</span>
-                                    <span className="total-amount">€{totalPrice.toFixed(2)}</span>
+                                    <span className="total-amount">{totalPrice.toFixed(2)} €</span>
                                 </div>
 
                                 <button className="clear-all-btn" onClick={onClearAll}>

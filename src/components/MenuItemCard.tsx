@@ -25,7 +25,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                 <p className="menu-item-description">{t.menuItems[item.description]}</p>
 
                 <div className="menu-card-footer">
-                    <span className="menu-item-price">€{item.price.toFixed(2)}</span>
+                    <span className="menu-item-price">{item.price.toFixed(2)} €</span>
 
                     {quantity > 0 ? (
                         <div className="quantity-controls">

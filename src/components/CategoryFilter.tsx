@@ -21,8 +21,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
                 className={`category-btn ${activeCategory === null ? 'active' : ''}`}
                 onClick={() => onCategoryChange(null)}
             >
-                <span className="category-icon">✨</span>
-                <span className="category-name">{t.all}</span>
+                {t.all}
             </button>
             {categories.map((category) => (
                 <button
@@ -30,8 +29,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
                     className={`category-btn ${activeCategory === category.id ? 'active' : ''}`}
                     onClick={() => onCategoryChange(category.id)}
                 >
-                    <span className="category-icon">{category.icon}</span>
-                    <span className="category-name">{t.categories[category.id as keyof typeof t.categories]}</span>
+                    {t.categories[category.id as keyof typeof t.categories]}
                 </button>
             ))}
         </div>

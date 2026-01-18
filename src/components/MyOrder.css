@@ -18,7 +18,7 @@
     background: var(--bg-secondary);
     border-top-left-radius: var(--space-lg);
     border-top-right-radius: var(--space-lg);
-    border: 2px solid var(--border-medium);
+    border: 1px solid var(--border-light);
     border-bottom: none;
     box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3), 0 -2px 10px rgba(0, 0, 0, 0.15);
     max-height: 80vh;
@@ -38,7 +38,7 @@
     justify-content: space-between;
     align-items: center;
     padding: var(--space-lg);
-    border-bottom: 2px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
     flex-shrink: 0;
 }
 
@@ -64,6 +64,7 @@
     padding: 4px 12px;
     border-radius: var(--radius-full);
     animation: scaleIn 0.3s var(--transition-base);
+    font-variant-numeric: tabular-nums;
 }
 
 .close-btn {
@@ -73,7 +74,7 @@
     align-items: center;
     justify-content: center;
     background: var(--bg-accent);
-    border: 2px solid var(--border-light);
+    border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
     font-size: 1.25rem;
     color: var(--text-secondary);
@@ -166,6 +167,7 @@
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
 }
 
 .order-qty-controls {
@@ -213,11 +215,12 @@
     font-weight: 700;
     color: var(--accent-primary);
     user-select: none;
+    font-variant-numeric: tabular-nums;
 }
 
 .order-footer {
     padding: var(--space-lg);
-    border-top: 2px solid var(--border-light);
+    border-top: 1px solid var(--border-light);
     background: var(--bg-primary);
     flex-shrink: 0;
     display: flex;
@@ -232,7 +235,7 @@
     padding: var(--space-md);
     background: var(--bg-accent);
     border-radius: var(--radius-md);
-    border: 2px solid var(--accent-light);
+    border: 1px solid var(--border-light);
 }
 
 .total-label {
@@ -247,13 +250,14 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--accent-primary);
+    font-variant-numeric: tabular-nums;
 }
 
 .clear-all-btn {
     width: 100%;
     padding: var(--space-md);
     background: transparent;
-    border: 2px solid var(--border-medium);
+    border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
     font-family: var(--font-body);
     font-size: 0.9375rem;
