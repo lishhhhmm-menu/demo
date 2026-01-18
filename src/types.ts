@@ -19,3 +19,35 @@ export type Category = {
     name: string;
     icon: string;
 };
+
+export type Language = 'en' | 'el' | 'it';
+
+export interface Translations {
+    restaurantName: string;
+    restaurantTagline: string;
+    myOrder: string;
+    items: string;
+    item: string;
+    total: string;
+    clearAll: string;
+    remove: string;
+    emptyOrder: string;
+    emptyOrderSubtext: string;
+    orderNote: string;
+    add: string;
+    added: string;
+    all: string;
+    quantity: string;
+    categories: {
+        appetizers: string;
+        mains: string;
+        pasta: string;
+        seafood: string;
+        desserts: string;
+        beverages: string;
+    };
+    dietary: {
+        vegetarian: string;
+        'gluten-free': string;
+    };
+}

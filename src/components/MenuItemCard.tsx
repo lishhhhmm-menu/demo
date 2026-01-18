@@ -1,14 +1,22 @@
 import React from 'react';
-import { MenuItem } from '../types';
+import { MenuItem, Translations } from '../types';
 import './MenuItemCard.css';
 
 interface MenuItemCardProps {
     item: MenuItem;
-    isInOrder: boolean;
-    onToggle: (item: MenuItem) => void;
+    quantity: number;
+    onAdd: (item: MenuItem) => void;
+    onRemove: (item: MenuItem) => void;
+    t: Translations;
 }
 
-const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, isInOrder, onToggle }) => {
+const MenuItemCard: React.FC<MenuItemCardProps> = ({
+    item,
+    quantity,
+    onAdd,
+    onRemove,
+    t
+}) => {
     const renderSpicyLevel = () => {
         if (!item.spicyLevel) return null;
         return (
@@ -24,7 +32,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, isInOrder, onToggle }
             <div className="dietary-tags">
                 {item.dietary.map((tag) => (
                     <span key={tag} className="dietary-tag">
-                        {tag}
+                        {t.dietary[tag as keyof typeof t.dietary] || tag}
                     </span>
                 ))}
             </div>
@@ -32,7 +40,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, isInOrder, onToggle }
     };
 
     return (
-        <div className={`menu-card ${isInOrder ? 'in-order' : ''} animate-fadeIn`}>
+        <div className={`menu-card ${quantity > 0 ? 'in-order' : ''}`}>
             {item.isPopular && (
                 <div className="popular-badge">
                     <span>⭐</span> Popular
@@ -53,21 +61,33 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, isInOrder, onToggle }
                         {renderDietary()}
                     </div>
 
-                    <button
-                        className={`add-btn ${isInOrder ? 'added' : ''}`}
-                        onClick={() => onToggle(item)}
-                        aria-label={isInOrder ? 'Remove from order' : 'Add to order'}
-                    >
-                        {isInOrder ? (
-                            <>
-                                <span className="checkmark">✓</span> Added
-                            </>
-                        ) : (
-                            <>
-                                <span className="plus">+</span> Add
-                            </>
-                        )}
-                    </button>
+                    {quantity > 0 ? (
+                        <div className="quantity-controls">
+                            <button
+                                className="qty-btn minus"
+                                onClick={() => onRemove(item)}
+                                aria-label="Decrease quantity"
+                            >
+                                −
+                            </button>
+                            <span className="qty-display">{quantity}</span>
+                            <button
+                                className="qty-btn plus"
+                                onClick={() => onAdd(item)}
+                                aria-label="Increase quantity"
+                            >
+                                +
+                            </button>
+                        </div>
+                    ) : (
+                        <button
+                            className="add-btn"
+                            onClick={() => onAdd(item)}
+                            aria-label="Add to order"
+                        >
+                            <span className="plus">+</span> {t.add}
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

@@ -2,49 +2,102 @@ import React, { useState, useMemo } from 'react';
 import CategoryFilter from './components/CategoryFilter';
 import MenuItemCard from './components/MenuItemCard';
 import MyOrder from './components/MyOrder';
+import LanguageSwitcher from './components/LanguageSwitcher';
 import { categories, menuItems } from './data/menuData';
-import { MenuItem } from './types';
+import { translations } from './data/translations';
+import { MenuItem, OrderItem, Language } from './types';
 import './App.css';
 
 function App() {
     const [activeCategory, setActiveCategory] = useState<string | null>(null);
-    const [orderItems, setOrderItems] = useState<MenuItem[]>([]);
+    const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
     const [isOrderOpen, setIsOrderOpen] = useState(false);
+    const [language, setLanguage] = useState<Language>('en');
+
+    const t = translations[language];
 
     const filteredItems = useMemo(() => {
         if (!activeCategory) return menuItems;
         return menuItems.filter(item => item.category === activeCategory);
     }, [activeCategory]);
 
-    const toggleOrderItem = (item: MenuItem) => {
+    const addItemToOrder = (item: MenuItem) => {
         setOrderItems(prev => {
-            const isInOrder = prev.some(orderItem => orderItem.id === item.id);
-            if (isInOrder) {
-                return prev.filter(orderItem => orderItem.id !== item.id);
+            const existingItem = prev.find(orderItem => orderItem.menuItem.id === item.id);
+            if (existingItem) {
+                return prev.map(orderItem =>
+                    orderItem.menuItem.id === item.id
+                        ? { ...orderItem, quantity: orderItem.quantity + 1 }
+                        : orderItem
+                );
             } else {
-                return [...prev, item];
+                return [...prev, { menuItem: item, quantity: 1 }];
             }
         });
     };
 
-    const removeOrderItem = (item: MenuItem) => {
-        setOrderItems(prev => prev.filter(orderItem => orderItem.id !== item.id));
+    const removeItemFromOrder = (item: MenuItem) => {
+        setOrderItems(prev => {
+            const existingItem = prev.find(orderItem => orderItem.menuItem.id === item.id);
+            if (!existingItem) return prev;
+
+            if (existingItem.quantity === 1) {
+                return prev.filter(orderItem => orderItem.menuItem.id !== item.id);
+            } else {
+                return prev.map(orderItem =>
+                    orderItem.menuItem.id === item.id
+                        ? { ...orderItem, quantity: orderItem.quantity - 1 }
+                        : orderItem
+                );
+            }
+        });
+    };
+
+    const increaseQuantity = (itemId: string) => {
+        setOrderItems(prev =>
+            prev.map(orderItem =>
+                orderItem.menuItem.id === itemId
+                    ? { ...orderItem, quantity: orderItem.quantity + 1 }
+                    : orderItem
+            )
+        );
+    };
+
+    const decreaseQuantity = (itemId: string) => {
+        setOrderItems(prev => {
+            const item = prev.find(orderItem => orderItem.menuItem.id === itemId);
+            if (!item) return prev;
+
+            if (item.quantity === 1) {
+                return prev.filter(orderItem => orderItem.menuItem.id !== itemId);
+            } else {
+                return prev.map(orderItem =>
+                    orderItem.menuItem.id === itemId
+                        ? { ...orderItem, quantity: orderItem.quantity - 1 }
+                        : orderItem
+                );
+            }
+        });
     };
 
     const clearAllItems = () => {
         setOrderItems([]);
     };
 
-    const isItemInOrder = (item: MenuItem) => {
-        return orderItems.some(orderItem => orderItem.id === item.id);
+    const getItemQuantity = (item: MenuItem) => {
+        const orderItem = orderItems.find(orderItem => orderItem.menuItem.id === item.id);
+        return orderItem ? orderItem.quantity : 0;
     };
+
+    const totalItemCount = orderItems.reduce((sum, item) => sum + item.quantity, 0);
 
     return (
         <div className="app">
             {/* Restaurant Title */}
             <div className="restaurant-header">
-                <h1 className="restaurant-name">Bella Tavola</h1>
-                <p className="restaurant-tagline">Browse our menu and prepare your order</p>
+                <h1 className="restaurant-name">{t.restaurantName}</h1>
+                <p className="restaurant-tagline">{t.restaurantTagline}</p>
+                <LanguageSwitcher currentLanguage={language} onLanguageChange={setLanguage} />
             </div>
 
             {/* Category Navigation */}
@@ -53,6 +106,7 @@ function App() {
                     categories={categories}
                     activeCategory={activeCategory}
                     onCategoryChange={setActiveCategory}
+                    t={t}
                 />
             </div>
 
@@ -63,8 +117,10 @@ function App() {
                         <MenuItemCard
                             key={item.id}
                             item={item}
-                            isInOrder={isItemInOrder(item)}
-                            onToggle={toggleOrderItem}
+                            quantity={getItemQuantity(item)}
+                            onAdd={addItemToOrder}
+                            onRemove={removeItemFromOrder}
+                            t={t}
                         />
                     ))}
                 </div>
@@ -78,13 +134,13 @@ function App() {
 
             {/* Floating Order Button */}
             <button
-                className={`floating-order-btn ${orderItems.length > 0 ? 'has-items' : ''}`}
+                className={`floating-order-btn ${totalItemCount > 0 ? 'has-items' : ''}`}
                 onClick={() => setIsOrderOpen(true)}
             >
                 <span className="order-icon">🛒</span>
-                <span className="order-text">My Order</span>
-                {orderItems.length > 0 && (
-                    <span className="order-badge">{orderItems.length}</span>
+                <span className="order-text">{t.myOrder}</span>
+                {totalItemCount > 0 && (
+                    <span className="order-badge">{totalItemCount}</span>
                 )}
             </button>
 
@@ -93,8 +149,10 @@ function App() {
                 items={orderItems}
                 isOpen={isOrderOpen}
                 onClose={() => setIsOrderOpen(false)}
-                onRemoveItem={removeOrderItem}
+                onIncreaseQuantity={increaseQuantity}
+                onDecreaseQuantity={decreaseQuantity}
                 onClearAll={clearAllItems}
+                t={t}
             />
         </div>
     );

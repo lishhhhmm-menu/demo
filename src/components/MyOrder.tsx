@@ -1,23 +1,28 @@
 import React from 'react';
-import { MenuItem } from '../types';
+import { OrderItem, Translations } from '../types';
 import './MyOrder.css';
 
 interface MyOrderProps {
-    items: MenuItem[];
+    items: OrderItem[];
     isOpen: boolean;
     onClose: () => void;
-    onRemoveItem: (item: MenuItem) => void;
+    onIncreaseQuantity: (itemId: string) => void;
+    onDecreaseQuantity: (itemId: string) => void;
     onClearAll: () => void;
+    t: Translations;
 }
 
 const MyOrder: React.FC<MyOrderProps> = ({
     items,
     isOpen,
     onClose,
-    onRemoveItem,
-    onClearAll
+    onIncreaseQuantity,
+    onDecreaseQuantity,
+    onClearAll,
+    t
 }) => {
-    const totalPrice = items.reduce((sum, item) => sum + item.price, 0);
+    const totalPrice = items.reduce((sum, item) => sum + (item.menuItem.price * item.quantity), 0);
+    const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
     return (
         <>
@@ -26,9 +31,11 @@ const MyOrder: React.FC<MyOrderProps> = ({
             <div className={`my-order ${isOpen ? 'open' : ''}`}>
                 <div className="order-header">
                     <div className="order-title-section">
-                        <h2 className="order-title">My Order</h2>
-                        {items.length > 0 && (
-                            <span className="item-count">{items.length} {items.length === 1 ? 'item' : 'items'}</span>
+                        <h2 className="order-title">{t.myOrder}</h2>
+                        {totalItems > 0 && (
+                            <span className="item-count">
+                                {totalItems} {totalItems === 1 ? t.item : t.items}
+                            </span>
                         )}
                     </div>
                     <button className="close-btn" onClick={onClose} aria-label="Close order">
@@ -40,41 +47,60 @@ const MyOrder: React.FC<MyOrderProps> = ({
                     {items.length === 0 ? (
                         <div className="empty-order">
                             <div className="empty-icon">📋</div>
-                            <p className="empty-text">Your order is empty</p>
-                            <p className="empty-subtext">Start adding items from the menu</p>
+                            <p className="empty-text">{t.emptyOrder}</p>
+                            <p className="empty-subtext">{t.emptyOrderSubtext}</p>
                         </div>
                     ) : (
                         <>
                             <div className="order-items">
-                                {items.map((item, index) => (
-                                    <div key={`${item.id}-${index}`} className="order-item animate-slideUp">
-                                        <div className="order-item-info">
-                                            <h4 className="order-item-name">{item.name}</h4>
-                                            <span className="order-item-price">${item.price.toFixed(2)}</span>
+                                {items.map((item) => (
+                                    <div key={item.menuItem.id} className="order-item">
+                                        <div className="order-item-main">
+                                            <div className="order-item-info">
+                                                <h4 className="order-item-name">{item.menuItem.name}</h4>
+                                                <span className="order-item-price">
+                                                    ${item.menuItem.price.toFixed(2)}
+                                                    {item.quantity > 1 && (
+                                                        <span className="item-subtotal">
+                                                            ${(item.menuItem.price * item.quantity).toFixed(2)}
+                                                        </span>
+                                                    )}
+                                                </span>
+                                            </div>
+                                            <div className="order-qty-controls">
+                                                <button
+                                                    className="order-qty-btn minus"
+                                                    onClick={() => onDecreaseQuantity(item.menuItem.id)}
+                                                    aria-label="Decrease quantity"
+                                                >
+                                                    −
+                                                </button>
+                                                <span className="order-qty-display">{item.quantity}</span>
+                                                <button
+                                                    className="order-qty-btn plus"
+                                                    onClick={() => onIncreaseQuantity(item.menuItem.id)}
+                                                    aria-label="Increase quantity"
+                                                >
+                                                    +
+                                                </button>
+                                            </div>
                                         </div>
-                                        <button
-                                            className="remove-btn"
-                                            onClick={() => onRemoveItem(item)}
-                                            aria-label={`Remove ${item.name}`}
-                                        >
-                                            Remove
-                                        </button>
                                     </div>
                                 ))}
                             </div>
 
                             <div className="order-footer">
                                 <div className="order-total">
-                                    <span className="total-label">Total</span>
+                                    <span className="total-label">{t.total}</span>
                                     <span className="total-amount">${totalPrice.toFixed(2)}</span>
                                 </div>
 
                                 <button className="clear-all-btn" onClick={onClearAll}>
-                                    Clear All
+                                    {t.clearAll}
                                 </button>
 
                                 <div className="order-note">
-                                    <p>💡 <strong>Ready to order?</strong> Show this list to your server</p>
+                                    <p>💡 <strong>{t.orderNote.split('?')[0]}?</strong> {t.orderNote.split('?')[1]}</p>
                                 </div>
                             </div>
                         </>

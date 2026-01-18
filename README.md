@@ -8,13 +8,19 @@ A beautiful, practical single-page restaurant menu application designed for cust
 
 🛒 **My Order List** - Add items to a temporary order list for easy ordering
 
+🔢 **Quantity Controls** - Add multiple quantities of any item from menu cards or within your order
+
+🌍 **Multi-Language Support** - Switch between English and Greek (Italian coming soon)
+
 📱 **Mobile-First Design** - Optimized for tablets and phones at restaurant tables
 
-🎨 **Premium UI** - Elegant design with smooth animations and micro-interactions
+🎨 **Premium UI** - Elegant design with smooth, performance-optimized interactions
 
 🔍 **Dietary Information** - View dietary tags (vegetarian, gluten-free) and spicy levels
 
 ⭐ **Popular Items** - Highlighted popular menu items
+
+⚡ **Performance Optimized** - Reduced animations for smooth experience on all devices
 
 ## Local Development with Docker
 
