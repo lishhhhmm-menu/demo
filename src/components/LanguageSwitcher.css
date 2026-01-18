@@ -1,36 +1,25 @@
 .language-switcher {
     display: flex;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
     justify-content: center;
     padding: var(--space-sm) 0;
 }
 
 .lang-btn {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 2px;
-    padding: var(--space-xs) var(--space-sm);
+    justify-content: center;
+    padding: 6px 12px;
     background: var(--bg-secondary);
     border: 2px solid var(--border-light);
     border-radius: var(--radius-md);
     font-family: var(--font-body);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: var(--text-secondary);
     cursor: pointer;
     transition: all var(--transition-fast);
-    min-width: 50px;
-}
-
-.lang-flag {
-    font-size: 1.25rem;
-    line-height: 1;
-}
-
-.lang-label {
-    font-size: 0.625rem;
-    line-height: 1;
+    min-width: 44px;
 }
 
 .lang-btn:hover:not(.disabled) {
@@ -47,16 +36,4 @@
 .lang-btn.disabled {
     opacity: 0.4;
     cursor: not-allowed;
-}
-
-@media (min-width: 768px) {
-    .lang-btn {
-        flex-direction: row;
-        gap: var(--space-xs);
-        min-width: 90px;
-    }
-
-    .lang-label {
-        font-size: 0.75rem;
-    }
 }

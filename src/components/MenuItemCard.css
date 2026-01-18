@@ -1,23 +1,23 @@
 .menu-card {
-    position: relative;
-    background: var(--bg-secondary);
-    border: 2px solid var(--border-light);
+    background: white;
     border-radius: var(--radius-lg);
     padding: var(--space-lg);
+    box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
-    box-shadow: var(--shadow-sm);
+    border: 2px solid transparent;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .menu-card:hover {
     border-color: var(--accent-primary);
     box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
 }
 
 .menu-card.in-order {
     border-color: var(--accent-primary);
-    background: linear-gradient(to bottom right, var(--bg-secondary), var(--accent-light));
-    box-shadow: 0 0 0 3px var(--accent-light);
+    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.2);
 }
 
 .popular-badge {
@@ -37,19 +37,23 @@
     z-index: 1;
 }
 
+/* Quantity Controls Container */
 .quantity-controls {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
+    gap: 6px;
+    height: 40px;
     background: var(--bg-secondary);
     border: 2px solid var(--accent-primary);
-    border-radius: var(--radius-full);
-    padding: 4px;
+    border-radius: 20px;
+    padding: 0 2px;
+    box-sizing: border-box;
 }
 
 .qty-btn {
     width: 32px;
     height: 32px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,16 +61,15 @@
     color: white;
     border: none;
     border-radius: 50%;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: background var(--transition-fast);
     line-height: 1;
 }
 
 .qty-btn:hover {
     background: var(--accent-hover);
-    transform: scale(1.1);
 }
 
 .qty-btn:active {
@@ -74,11 +77,12 @@
 }
 
 .qty-display {
-    min-width: 28px;
+    min-width: 24px;
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.9375rem;
     font-weight: 700;
     color: var(--accent-primary);
+    user-select: none;
 }
 
 .menu-card-content {
@@ -87,81 +91,49 @@
     gap: var(--space-sm);
 }
 
-.menu-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: var(--space-md);
-}
-
 .menu-item-name {
     font-family: var(--font-heading);
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin: 0;
-    flex: 1;
+    margin: 0 0 var(--space-xs) 0;
+    line-height: 1.3;
 }
 
 .menu-item-price {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--accent-primary);
-    white-space: nowrap;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
 }
 
 .menu-item-description {
     color: var(--text-secondary);
     font-size: 0.9375rem;
     line-height: 1.5;
-    margin: 0;
+    margin: 0 0 var(--space-sm) 0;
+    flex: 1;
 }
 
 .menu-card-footer {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     gap: var(--space-md);
-    margin-top: var(--space-sm);
+    margin-top: auto;
 }
 
-.menu-card-meta {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-    flex: 1;
-}
-
-.spicy-indicator {
-    font-size: 0.875rem;
-    line-height: 1;
-}
-
-.dietary-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-}
-
-.dietary-tag {
-    font-size: 0.6875rem;
-    font-weight: 500;
-    padding: 2px 8px;
-    background: var(--success-light);
-    color: #065F46;
-    border-radius: var(--radius-sm);
-    text-transform: capitalize;
-}
-
+/* Add Button */
 .add-btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
-    padding: var(--space-sm) var(--space-lg);
+    height: 40px;
+    padding: 0 18px;
     background: var(--accent-primary);
     color: white;
-    border: none;
-    border-radius: var(--radius-full);
+    border: 2px solid var(--accent-primary);
+    border-radius: 20px;
     font-family: var(--font-body);
     font-size: 0.9375rem;
     font-weight: 600;
@@ -169,28 +141,20 @@
     transition: all var(--transition-fast);
     box-shadow: var(--shadow-sm);
     white-space: nowrap;
+    box-sizing: border-box;
 }
 
 .add-btn:hover {
     background: var(--accent-hover);
+    border-color: var(--accent-hover);
     box-shadow: var(--shadow-md);
-    transform: scale(1.05);
 }
 
 .add-btn:active {
     transform: scale(0.98);
 }
 
-.add-btn.added {
-    background: var(--success);
-}
-
-.add-btn.added:hover {
-    background: #059669;
-}
-
-.add-btn .plus,
-.add-btn .checkmark {
+.add-btn .plus {
     font-size: 1.125rem;
     line-height: 1;
 }

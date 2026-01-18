@@ -6,7 +6,6 @@ export interface MenuItem {
     category: string;
     dietary?: string[];
     spicyLevel?: number;
-    isPopular?: boolean;
 }
 
 export interface OrderItem {
@@ -49,5 +48,8 @@ export interface Translations {
     dietary: {
         vegetarian: string;
         'gluten-free': string;
+    };
+    menuItems: {
+        [key: string]: string;
     };
 }

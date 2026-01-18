@@ -12,7 +12,7 @@ function App() {
     const [activeCategory, setActiveCategory] = useState<string | null>(null);
     const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
     const [isOrderOpen, setIsOrderOpen] = useState(false);
-    const [language, setLanguage] = useState<Language>('en');
+    const [language, setLanguage] = useState<Language>('el');
 
     const t = translations[language];
 
@@ -96,7 +96,6 @@ function App() {
             {/* Restaurant Title */}
             <div className="restaurant-header">
                 <h1 className="restaurant-name">{t.restaurantName}</h1>
-                <p className="restaurant-tagline">{t.restaurantTagline}</p>
                 <LanguageSwitcher currentLanguage={language} onLanguageChange={setLanguage} />
             </div>
 
@@ -111,7 +110,7 @@ function App() {
             </div>
 
             {/* Menu Grid */}
-            <main className="menu-container container">
+            <main className="menu-container">
                 <div className="menu-grid">
                     {filteredItems.map((item) => (
                         <MenuItemCard
@@ -133,16 +132,13 @@ function App() {
             </main>
 
             {/* Floating Order Button */}
-            <button
-                className={`floating-order-btn ${totalItemCount > 0 ? 'has-items' : ''}`}
-                onClick={() => setIsOrderOpen(true)}
-            >
-                <span className="order-icon">🛒</span>
-                <span className="order-text">{t.myOrder}</span>
-                {totalItemCount > 0 && (
+            {totalItemCount > 0 && (
+                <button className="floating-order-btn" onClick={() => setIsOrderOpen(true)}>
+                    <span style={{ fontSize: '1.25rem' }}>📋</span>
+                    <span>{t.myOrder}</span>
                     <span className="order-badge">{totalItemCount}</span>
-                )}
-            </button>
+                </button>
+            )}
 
             {/* Order Panel */}
             <MyOrder

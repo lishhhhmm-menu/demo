@@ -1,6 +1,6 @@
 .app {
     min-height: 100vh;
-    padding-bottom: 100px;
+    padding-bottom: 5rem;
 }
 
 .restaurant-header {
@@ -15,30 +15,22 @@
     font-size: 1.875rem;
     font-weight: 700;
     color: var(--accent-primary);
-    margin: 0 0 4px 0;
-    letter-spacing: -0.02em;
-}
-
-.restaurant-tagline {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
     margin: 0 0 var(--space-sm) 0;
-    font-weight: 400;
+    letter-spacing: -0.02em;
 }
 
 .sticky-nav {
     position: sticky;
     top: 0;
-    background: var(--bg-primary);
+    background: white;
     z-index: 100;
-    padding: var(--space-sm) 0;
-    border-bottom: 2px solid var(--border-light);
     box-shadow: var(--shadow-sm);
 }
 
 .menu-container {
-    padding-top: var(--space-xl);
-    padding-bottom: var(--space-2xl);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-md);
 }
 
 .menu-grid {
@@ -70,14 +62,14 @@
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: var(--shadow-xl);
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
     transition: all var(--transition-base);
     z-index: 500;
 }
 
 .floating-order-btn:hover {
     transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 20px 40px -10px rgba(255, 107, 53, 0.5);
+    box-shadow: 0 12px 32px rgba(255, 107, 53, 0.6);
 }
 
 .floating-order-btn:active {
