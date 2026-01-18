@@ -131,14 +131,20 @@ function App() {
                 )}
             </main>
 
-            {/* Floating Order Button */}
-            {totalItemCount > 0 && (
-                <button className="floating-order-btn" onClick={() => setIsOrderOpen(true)}>
-                    <span style={{ fontSize: '1.25rem' }}>📋</span>
-                    <span>{t.myOrder}</span>
-                    <span className="order-badge">{totalItemCount}</span>
-                </button>
-            )}
+            {/* Fixed Bottom Container - shows empty message or order button */}
+            <div className="bottom-container">
+                {totalItemCount === 0 ? (
+                    <div className="empty-order-message">
+                        <p>{t.emptyOrder}</p>
+                    </div>
+                ) : (
+                    <button className="order-btn" onClick={() => setIsOrderOpen(true)}>
+                        <span style={{ fontSize: '1.25rem' }}>📋</span>
+                        <span>{t.myOrder}</span>
+                        <span className="order-badge">{totalItemCount}</span>
+                    </button>
+                )}
+            </div>
 
             {/* Order Panel */}
             <MyOrder

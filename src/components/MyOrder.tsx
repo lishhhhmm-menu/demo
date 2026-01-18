@@ -55,18 +55,9 @@ const MyOrder: React.FC<MyOrderProps> = ({
                             <div className="order-items">
                                 {items.map((item) => (
                                     <div key={item.menuItem.id} className="order-item">
-                                        <div className="order-item-main">
-                                            <div className="order-item-info">
-                                                <h4 className="order-item-name">{t.menuItems[item.menuItem.name]}</h4>
-                                                <span className="order-item-price">
-                                                    €{item.menuItem.price.toFixed(2)}
-                                                    {item.quantity > 1 && (
-                                                        <span className="item-subtotal">
-                                                            €{(item.menuItem.price * item.quantity).toFixed(2)}
-                                                        </span>
-                                                    )}
-                                                </span>
-                                            </div>
+                                        <h4 className="order-item-name">{t.menuItems[item.menuItem.name]}</h4>
+                                        <div className="order-item-footer">
+                                            <span className="order-item-price">€{item.menuItem.price.toFixed(2)}</span>
                                             <div className="order-qty-controls">
                                                 <button
                                                     className="order-qty-btn minus"
