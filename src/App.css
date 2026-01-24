@@ -1,6 +1,6 @@
 .app {
     min-height: 100vh;
-    padding-bottom: 5rem;
+    padding-bottom: calc(5rem + var(--space-md));
 }
 
 .restaurant-header {
@@ -24,7 +24,7 @@
     top: 0;
     background: white;
     z-index: 100;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .menu-container {
@@ -58,8 +58,10 @@
     align-items: center;
     justify-content: center;
     padding: 0 var(--space-md);
-    background: linear-gradient(to top, var(--bg-primary) 70%, transparent);
+    background: hsl(from var(--bg-primary) h s l / 0.95);
     z-index: 500;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(8px);
 }
 
 .empty-order-message {
