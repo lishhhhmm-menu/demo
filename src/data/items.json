@@ -1,0 +1,508 @@
+[
+    {
+        "id": "app-1",
+        "price": 12.50,
+        "category": "appetizers",
+        "dietary": [
+            "vegetarian"
+        ],
+        "translations": {
+            "en": {
+                "name": "Bruschetta Trio",
+                "description": "Three varieties: classic tomato basil, mushroom truffle, and roasted pepper"
+            },
+            "el": {
+                "name": "Τρίο Μπρουσκέτας",
+                "description": "Τρεις ποικιλίες: κλασική ντομάτα βασιλικό, μανιτάρι τρούφα και ψητή πιπεριά"
+            },
+            "it": {
+                "name": "Trio di Bruschette",
+                "description": "Tre varietà: pomodoro basilico classico, funghi tartufo e peperone arrostito"
+            }
+        }
+    },
+    {
+        "id": "app-2",
+        "price": 14.00,
+        "category": "appetizers",
+        "translations": {
+            "en": {
+                "name": "Calamari Fritti",
+                "description": "Crispy fried calamari with lemon aioli and marinara sauce"
+            },
+            "el": {
+                "name": "Καλαμαράκια Τηγανητά",
+                "description": "Τραγανά τηγανητά καλαμαράκια με λεμόνι αϊολί και σάλτσα μαρινάρα"
+            },
+            "it": {
+                "name": "Calamari Fritti",
+                "description": "Calamari fritti croccanti con aioli al limone e salsa marinara"
+            }
+        }
+    },
+    {
+        "id": "app-3",
+        "price": 11.00,
+        "category": "appetizers",
+        "dietary": [
+            "vegetarian",
+            "gluten-free"
+        ],
+        "translations": {
+            "en": {
+                "name": "Caprese Salad",
+                "description": "Fresh mozzarella, heirloom tomatoes, basil, balsamic reduction"
+            },
+            "el": {
+                "name": "Σαλάτα Καπρέζε",
+                "description": "Φρέσκια μοτσαρέλα, ντομάτες, βασιλικός, βαλσάμικο"
+            },
+            "it": {
+                "name": "Insalata Caprese",
+                "description": "Mozzarella fresca, pomodori, basilico, riduzione balsamica"
+            }
+        }
+    },
+    {
+        "id": "app-4",
+        "price": 10.50,
+        "category": "appetizers",
+        "dietary": [
+            "vegetarian"
+        ],
+        "spicyLevel": 2,
+        "translations": {
+            "en": {
+                "name": "Crispy Cauliflower",
+                "description": "Buffalo-spiced cauliflower with blue cheese dip"
+            },
+            "el": {
+                "name": "Τραγανό Κουνουπίδι",
+                "description": "Καυτερό κουνουπίδι με σάλτσα μπλε τυρί"
+            },
+            "it": {
+                "name": "Cavolfiore Croccante",
+                "description": "Cavolfiore piccante con salsa al formaggio blu"
+            }
+        }
+    },
+    {
+        "id": "main-1",
+        "price": 38.00,
+        "category": "mains",
+        "translations": {
+            "en": {
+                "name": "Grilled Ribeye Steak",
+                "description": "12oz ribeye with garlic butter, roasted vegetables, and truffle mashed potatoes"
+            },
+            "el": {
+                "name": "Ριμπάι Στη Σχάρα",
+                "description": "Ριμπάι 340γρ με βούτυρο σκόρδου, ψητά λαχανικά και πουρέ πατάτας με τρούφα"
+            },
+            "it": {
+                "name": "Bistecca di Ribeye alla Griglia",
+                "description": "Ribeye da 340g con burro all'aglio, verdure arrostite e purè di patate al tartufo"
+            }
+        }
+    },
+    {
+        "id": "main-2",
+        "price": 34.00,
+        "category": "mains",
+        "translations": {
+            "en": {
+                "name": "Herb-Crusted Lamb Chops",
+                "description": "Three lamb chops with rosemary jus, asparagus, and fingerling potatoes"
+            },
+            "el": {
+                "name": "Παϊδάκια Αρνιού με Βότανα",
+                "description": "Τρία παϊδάκια με σάλτσα δεντρολίβανου, σπαράγγια και πατάτες"
+            },
+            "it": {
+                "name": "Costolette d'Agnello alle Erbe",
+                "description": "Tre costolette con jus al rosmarino, asparagi e patate novelle"
+            }
+        }
+    },
+    {
+        "id": "main-3",
+        "price": 24.00,
+        "category": "mains",
+        "dietary": [
+            "gluten-free"
+        ],
+        "translations": {
+            "en": {
+                "name": "Pan-Seared Chicken",
+                "description": "Chicken breast with lemon caper sauce, seasonal vegetables"
+            },
+            "el": {
+                "name": "Κοτόπουλο στο Τηγάνι",
+                "description": "Στήθος κοτόπουλου με σάλτσα λεμονιού και κάπαρης, εποχιακά λαχανικά"
+            },
+            "it": {
+                "name": "Pollo in Padella",
+                "description": "Petto di pollo con salsa al limone e capperi, verdure di stagione"
+            }
+        }
+    },
+    {
+        "id": "main-4",
+        "price": 22.00,
+        "category": "mains",
+        "dietary": [
+            "vegetarian"
+        ],
+        "translations": {
+            "en": {
+                "name": "Vegetable Wellington",
+                "description": "Roasted vegetables and mushrooms in puff pastry with red wine reduction"
+            },
+            "el": {
+                "name": "Ουέλινγκτον Λαχανικών",
+                "description": "Ψητά λαχανικά και μανιτάρια σε σφολιάτα με σάλτσα κόκκινου κρασιού"
+            },
+            "it": {
+                "name": "Wellington di Verdure",
+                "description": "Verdure arrostite e funghi in pasta sfoglia con riduzione di vino rosso"
+            }
+        }
+    },
+    {
+        "id": "pasta-1",
+        "price": 28.00,
+        "category": "pasta",
+        "translations": {
+            "en": {
+                "name": "Lobster Ravioli",
+                "description": "House-made ravioli with lobster filling in creamy tomato vodka sauce"
+            },
+            "el": {
+                "name": "Ραβιόλι με Αστακό",
+                "description": "Σπιτικά ραβιόλι με γέμιση αστακού σε κρεμώδη σάλτσα ντομάτας βότκα"
+            },
+            "it": {
+                "name": "Ravioli all'Astice",
+                "description": "Ravioli fatti in casa con ripieno di astice in cremosa salsa di pomodoro e vodka"
+            }
+        }
+    },
+    {
+        "id": "pasta-2",
+        "price": 19.00,
+        "category": "pasta",
+        "translations": {
+            "en": {
+                "name": "Spaghetti Carbonara",
+                "description": "Classic Roman carbonara with guanciale, eggs, pecorino, black pepper"
+            },
+            "el": {
+                "name": "Σπαγγέτι Καρμπονάρα",
+                "description": "Κλασική ρωμαϊκή καρμπονάρα με γουαντσιάλε, αυγά, πεκορίνο, μαύρο πιπέρι"
+            },
+            "it": {
+                "name": "Spaghetti alla Carbonara",
+                "description": "Carbonara romana classica con guanciale, uova, pecorino, pepe nero"
+            }
+        }
+    },
+    {
+        "id": "pasta-3",
+        "price": 16.00,
+        "category": "pasta",
+        "dietary": [
+            "vegetarian"
+        ],
+        "spicyLevel": 3,
+        "translations": {
+            "en": {
+                "name": "Penne Arrabbiata",
+                "description": "Spicy tomato sauce with garlic and fresh basil"
+            },
+            "el": {
+                "name": "Πέννε Αραμπιάτα",
+                "description": "Καυτερή σάλτσα ντομάτας με σκόρδο και φρέσκο βασιλικό"
+            },
+            "it": {
+                "name": "Penne all'Arrabbiata",
+                "description": "Salsa di pomodoro piccante con aglio e basilico fresco"
+            }
+        }
+    },
+    {
+        "id": "pasta-4",
+        "price": 23.00,
+        "category": "pasta",
+        "dietary": [
+            "vegetarian"
+        ],
+        "translations": {
+            "en": {
+                "name": "Mushroom Truffle Fettuccine",
+                "description": "Fresh fettuccine with wild mushrooms, cream, and truffle oil"
+            },
+            "el": {
+                "name": "Φετουτσίνι με Μανιτάρια και Τρούφα",
+                "description": "Φρέσκα φετουτσίνι με άγρια μανιτάρια, κρέμα και λάδι τρούφας"
+            },
+            "it": {
+                "name": "Fettuccine ai Funghi e Tartufo",
+                "description": "Fettuccine fresche con funghi selvatici, panna e olio al tartufo"
+            }
+        }
+    },
+    {
+        "id": "sea-1",
+        "price": 36.00,
+        "category": "seafood",
+        "translations": {
+            "en": {
+                "name": "Chilean Sea Bass",
+                "description": "Miso-glazed sea bass with bok choy and jasmine rice"
+            },
+            "el": {
+                "name": "Λαβράκι Χιλής",
+                "description": "Λαβράκι με γλάσο μίσο, μποκ τσόι και ρύζι γιασμίν"
+            },
+            "it": {
+                "name": "Branzino Cileno",
+                "description": "Branzino glassato al miso con bok choy e riso al gelsomino"
+            }
+        }
+    },
+    {
+        "id": "sea-2",
+        "price": 26.00,
+        "category": "seafood",
+        "translations": {
+            "en": {
+                "name": "Jumbo Shrimp Scampi",
+                "description": "Garlic butter white wine sauce, linguine, lemon"
+            },
+            "el": {
+                "name": "Γαρίδες Σκάμπι",
+                "description": "Σάλτσα βουτύρου σκόρδου λευκού κρασιού, λινγκουίνι, λεμόνι"
+            },
+            "it": {
+                "name": "Gamberoni alla Scampi",
+                "description": "Salsa di burro all'aglio e vino bianco, linguine, limone"
+            }
+        }
+    },
+    {
+        "id": "sea-3",
+        "price": 27.00,
+        "category": "seafood",
+        "dietary": [
+            "gluten-free"
+        ],
+        "translations": {
+            "en": {
+                "name": "Grilled Salmon",
+                "description": "Atlantic salmon with dill sauce, roasted vegetables"
+            },
+            "el": {
+                "name": "Σολομός στη Σχάρα",
+                "description": "Σολομός Ατλαντικού με σάλτσα άνηθου, ψητά λαχανικά"
+            },
+            "it": {
+                "name": "Salmone alla Griglia",
+                "description": "Salmone atlantico con salsa all'aneto, verdure arrostite"
+            }
+        }
+    },
+    {
+        "id": "sea-4",
+        "price": 32.00,
+        "category": "seafood",
+        "spicyLevel": 1,
+        "translations": {
+            "en": {
+                "name": "Seafood Paella",
+                "description": "Saffron rice with mussels, clams, shrimp, and chorizo"
+            },
+            "el": {
+                "name": "Παέγια Θαλασσινών",
+                "description": "Ρύζι με σαφράν με μύδια, αχιβάδες, γαρίδες και τσορίθο"
+            },
+            "it": {
+                "name": "Paella di Mare",
+                "description": "Riso allo zafferano con cozze, vongole, gamberi e chorizo"
+            }
+        }
+    },
+    {
+        "id": "dess-1",
+        "price": 9.00,
+        "category": "desserts",
+        "translations": {
+            "en": {
+                "name": "Tiramisu",
+                "description": "Classic Italian dessert with espresso-soaked ladyfingers and mascarpone"
+            },
+            "el": {
+                "name": "Τιραμισού",
+                "description": "Κλασικό ιταλικό επιδόρπιο με μπισκότα εσπρέσο και μασκαρπόνε"
+            },
+            "it": {
+                "name": "Tiramisù",
+                "description": "Classico dolce italiano con savoiardi imbevuti di espresso e mascarpone"
+            }
+        }
+    },
+    {
+        "id": "dess-2",
+        "price": 10.00,
+        "category": "desserts",
+        "translations": {
+            "en": {
+                "name": "Chocolate Lava Cake",
+                "description": "Warm chocolate cake with molten center, vanilla ice cream"
+            },
+            "el": {
+                "name": "Κέικ Σοκολάτας με Λάβα",
+                "description": "Ζεστό κέικ σοκολάτας με λιωμένο κέντρο, παγωτό βανίλια"
+            },
+            "it": {
+                "name": "Torta al Cioccolato con Cuore Fondente",
+                "description": "Torta al cioccolato calda con centro fuso, gelato alla vaniglia"
+            }
+        }
+    },
+    {
+        "id": "dess-3",
+        "price": 8.50,
+        "category": "desserts",
+        "dietary": [
+            "gluten-free"
+        ],
+        "translations": {
+            "en": {
+                "name": "Panna Cotta",
+                "description": "Vanilla panna cotta with mixed berry compote"
+            },
+            "el": {
+                "name": "Πάνα Κότα",
+                "description": "Πάνα κότα βανίλιας με κομπόστα μούρων"
+            },
+            "it": {
+                "name": "Panna Cotta",
+                "description": "Panna cotta alla vaniglia con composta di frutti di bosco"
+            }
+        }
+    },
+    {
+        "id": "dess-4",
+        "price": 9.50,
+        "category": "desserts",
+        "translations": {
+            "en": {
+                "name": "Lemon Tart",
+                "description": "Tangy lemon curd in buttery pastry with raspberry coulis"
+            },
+            "el": {
+                "name": "Τάρτα Λεμονιού",
+                "description": "Ξινή κρέμα λεμονιού σε βουτυρωτή ζύμη με κούλι βατόμουρου"
+            },
+            "it": {
+                "name": "Crostata al Limone",
+                "description": "Crema al limone aspra in pasta frolla burrosa con coulis di lamponi"
+            }
+        }
+    },
+    {
+        "id": "bev-1",
+        "price": 5.00,
+        "category": "beverages",
+        "translations": {
+            "en": {
+                "name": "Fresh Squeezed Lemonade",
+                "description": "House-made with organic lemons and mint"
+            },
+            "el": {
+                "name": "Φρέσκια Λεμονάδα",
+                "description": "Σπιτική με βιολογικά λεμόνια και μέντα"
+            },
+            "it": {
+                "name": "Limonata Fresca Spremuta",
+                "description": "Fatta in casa con limoni biologici e menta"
+            }
+        }
+    },
+    {
+        "id": "bev-2",
+        "price": 4.50,
+        "category": "beverages",
+        "translations": {
+            "en": {
+                "name": "Italian Soda",
+                "description": "Choice of flavor: raspberry, peach, or vanilla"
+            },
+            "el": {
+                "name": "Ιταλική Σόδα",
+                "description": "Επιλογή γεύσης: βατόμουρο, ροδάκινο ή βανίλια"
+            },
+            "it": {
+                "name": "Soda Italiana",
+                "description": "Scelta di gusto: lampone, pesca o vaniglia"
+            }
+        }
+    },
+    {
+        "id": "bev-3",
+        "price": 3.50,
+        "category": "beverages",
+        "translations": {
+            "en": {
+                "name": "Iced Tea (Sweet or Unsweet)",
+                "description": "Fresh brewed daily"
+            },
+            "el": {
+                "name": "Παγωμένο Τσάι (Γλυκό ή Άγλυκο)",
+                "description": "Φρέσκο καθημερινά"
+            },
+            "it": {
+                "name": "Tè Freddo (Dolce o Non Dolce)",
+                "description": "Preparato fresco ogni giorno"
+            }
+        }
+    },
+    {
+        "id": "bev-4",
+        "price": 4.00,
+        "category": "beverages",
+        "translations": {
+            "en": {
+                "name": "Espresso",
+                "description": "Double shot of premium Italian espresso"
+            },
+            "el": {
+                "name": "Εσπρέσο",
+                "description": "Διπλό σοτ από premium ιταλικό εσπρέσο"
+            },
+            "it": {
+                "name": "Espresso",
+                "description": "Doppio shot di espresso italiano premium"
+            }
+        }
+    },
+    {
+        "id": "bev-5",
+        "price": 5.50,
+        "category": "beverages",
+        "translations": {
+            "en": {
+                "name": "Cappuccino",
+                "description": "Espresso with steamed milk and foam"
+            },
+            "el": {
+                "name": "Καπουτσίνο",
+                "description": "Εσπρέσο με ατμοποιημένο γάλα και αφρό"
+            },
+            "it": {
+                "name": "Cappuccino",
+                "description": "Espresso con latte vaporizzato e schiuma"
+            }
+        }
+    }
+]

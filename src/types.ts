@@ -38,12 +38,7 @@ export interface Translations {
     all: string;
     quantity: string;
     categories: {
-        appetizers: string;
-        mains: string;
-        pasta: string;
-        seafood: string;
-        desserts: string;
-        beverages: string;
+        [key: string]: string;
     };
     dietary: {
         vegetarian: string;

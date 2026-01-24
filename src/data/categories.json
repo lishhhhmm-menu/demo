@@ -1,0 +1,92 @@
+[
+    {
+        "id": "appetizers",
+        "icon": "🥗",
+        "translations": {
+            "en": {
+                "name": "Appetizers"
+            },
+            "el": {
+                "name": "Ορεκτικά"
+            },
+            "it": {
+                "name": "Antipasti"
+            }
+        }
+    },
+    {
+        "id": "mains",
+        "icon": "🍽️",
+        "translations": {
+            "en": {
+                "name": "Main Courses"
+            },
+            "el": {
+                "name": "Κύρια Πιάτα"
+            },
+            "it": {
+                "name": "Piatti Principali"
+            }
+        }
+    },
+    {
+        "id": "pasta",
+        "icon": "🍝",
+        "translations": {
+            "en": {
+                "name": "Pasta"
+            },
+            "el": {
+                "name": "Ζυμαρικά"
+            },
+            "it": {
+                "name": "Pasta"
+            }
+        }
+    },
+    {
+        "id": "seafood",
+        "icon": "🦞",
+        "translations": {
+            "en": {
+                "name": "Seafood"
+            },
+            "el": {
+                "name": "Θαλασσινά"
+            },
+            "it": {
+                "name": "Pesce"
+            }
+        }
+    },
+    {
+        "id": "desserts",
+        "icon": "🍰",
+        "translations": {
+            "en": {
+                "name": "Desserts"
+            },
+            "el": {
+                "name": "Επιδόρπια"
+            },
+            "it": {
+                "name": "Dolci"
+            }
+        }
+    },
+    {
+        "id": "beverages",
+        "icon": "🍹",
+        "translations": {
+            "en": {
+                "name": "Beverages"
+            },
+            "el": {
+                "name": "Ποτά"
+            },
+            "it": {
+                "name": "Bevande"
+            }
+        }
+    }
+]
