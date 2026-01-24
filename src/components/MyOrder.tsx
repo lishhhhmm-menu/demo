@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { OrderItem, Translations } from '../types';
+import { categories } from '../data/menuData';
 import './MyOrder.css';
 
 interface MyOrderProps {
@@ -65,31 +66,45 @@ const MyOrder: React.FC<MyOrderProps> = ({
                     ) : (
                         <>
                             <div className="order-items">
-                                {items.map((item) => (
-                                    <div key={item.menuItem.id} className="order-item">
-                                        <h4 className="order-item-name">{t.menuItems[item.menuItem.name]}</h4>
-                                        <div className="order-item-footer">
-                                            <span className="order-item-price">{item.menuItem.price.toFixed(2)} €</span>
-                                            <div className="order-qty-controls">
-                                                <button
-                                                    className="order-qty-btn minus"
-                                                    onClick={() => onDecreaseQuantity(item.menuItem.id)}
-                                                    aria-label="Decrease quantity"
-                                                >
-                                                    −
-                                                </button>
-                                                <span className="order-qty-display">{item.quantity}</span>
-                                                <button
-                                                    className="order-qty-btn plus"
-                                                    onClick={() => onIncreaseQuantity(item.menuItem.id)}
-                                                    aria-label="Increase quantity"
-                                                >
-                                                    +
-                                                </button>
+                                {categories.map(category => {
+                                    const categoryItems = items.filter(item => item.menuItem.category === category.id);
+                                    if (categoryItems.length === 0) return null;
+
+                                    return (
+                                        <div key={category.id} className="order-category-group">
+                                            <h3 className="order-category-title">
+                                                {t.categories[category.id] || category.name}
+                                            </h3>
+                                            <div className="category-items-list">
+                                                {categoryItems.map((item) => (
+                                                    <div key={item.menuItem.id} className="order-item">
+                                                        <h4 className="order-item-name">{t.menuItems[item.menuItem.name]}</h4>
+                                                        <div className="order-item-footer">
+                                                            <span className="order-item-price">{item.menuItem.price.toFixed(2)} €</span>
+                                                            <div className="order-qty-controls">
+                                                                <button
+                                                                    className="order-qty-btn minus"
+                                                                    onClick={() => onDecreaseQuantity(item.menuItem.id)}
+                                                                    aria-label="Decrease quantity"
+                                                                >
+                                                                    −
+                                                                </button>
+                                                                <span className="order-qty-display">{item.quantity}</span>
+                                                                <button
+                                                                    className="order-qty-btn plus"
+                                                                    onClick={() => onIncreaseQuantity(item.menuItem.id)}
+                                                                    aria-label="Increase quantity"
+                                                                >
+                                                                    +
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
                                             </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
 
                             <div className="order-footer">
