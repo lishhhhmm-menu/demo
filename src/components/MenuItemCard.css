@@ -17,7 +17,7 @@
 
 .menu-card.in-order {
     border-color: var(--accent-primary);
-    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.2);
+    box-shadow: 0 4px 20px hsl(from var(--accent-primary) h s l / 0.2);
 }
 
 .popular-badge {
@@ -156,10 +156,7 @@
     transform: scale(0.98);
 }
 
-.add-btn .plus {
-    font-size: 1.125rem;
-    line-height: 1;
-}
+
 
 
 @media (max-width: 640px) {

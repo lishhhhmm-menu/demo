@@ -51,7 +51,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                             onClick={() => onAdd(item)}
                             aria-label="Add to order"
                         >
-                            <span className="plus">+</span> {t.add}
+                            {t.add}
                         </button>
                     )}
                 </div>
