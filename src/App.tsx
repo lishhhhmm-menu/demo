@@ -10,9 +10,44 @@ import './App.css';
 
 function App() {
     const [activeCategory, setActiveCategory] = useState<string | null>(null);
-    const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
+    const [orderItems, setOrderItems] = useState<OrderItem[]>(() => {
+        try {
+            const savedOrder = localStorage.getItem('restaurant-menu-order');
+            if (!savedOrder) return [];
+
+            const parsedOrder = JSON.parse(savedOrder) as { id: string; quantity: number }[];
+
+            // Re-hydrate order items using fresh data from menuItems
+            // This ensures we don't have stale prices/names and filters out removed items
+            const hydratedOrder: OrderItem[] = parsedOrder
+                .reduce((acc: OrderItem[], savedItem) => {
+                    const freshMenuItem = menuItems.find(item => item.id === savedItem.id);
+                    if (freshMenuItem) {
+                        acc.push({
+                            menuItem: freshMenuItem,
+                            quantity: savedItem.quantity
+                        });
+                    }
+                    return acc;
+                }, []);
+
+            return hydratedOrder;
+        } catch (error) {
+            console.error('Failed to parse saved order:', error);
+            return [];
+        }
+    });
     const [isOrderOpen, setIsOrderOpen] = useState(false);
     const [language, setLanguage] = useState<Language>('el');
+
+    // Save only necessary data (ID and quantity) to version control the order
+    useEffect(() => {
+        const orderToSave = orderItems.map(item => ({
+            id: item.menuItem.id,
+            quantity: item.quantity
+        }));
+        localStorage.setItem('restaurant-menu-order', JSON.stringify(orderToSave));
+    }, [orderItems]);
 
     useEffect(() => {
         const themeColor = getComputedStyle(document.documentElement).getPropertyValue('--theme-color').trim();
