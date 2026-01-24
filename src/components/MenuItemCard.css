@@ -87,9 +87,14 @@
 }
 
 .menu-card-content {
+    margin-top: auto;
+}
+
+.menu-card-content {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
+    height: 100%;
 }
 
 .menu-item-name {

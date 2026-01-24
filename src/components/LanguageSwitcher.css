@@ -1,6 +1,6 @@
 .language-switcher {
     display: flex;
-    gap: var(--space-xs);
+    gap: var(--space-sm);
     justify-content: center;
     padding: var(--space-sm) 0;
 }
@@ -12,7 +12,7 @@
     padding: 6px 12px;
     background: var(--bg-secondary);
     border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-full);
     font-family: var(--font-body);
     font-size: 0.75rem;
     font-weight: 600;
