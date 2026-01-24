@@ -7,7 +7,6 @@
     text-align: center;
     padding: var(--space-md) var(--space-md) var(--space-sm);
     background: linear-gradient(135deg, var(--bg-accent), var(--bg-secondary));
-    border-bottom: 1px solid var(--border-light);
 }
 
 .restaurant-name {
