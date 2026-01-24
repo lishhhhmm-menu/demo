@@ -1,143 +1,43 @@
 # Restaurant Menu App 🍽️
 
-A beautiful, practical single-page restaurant menu application designed for customers to browse menu items and prepare their order before the server arrives.
+A beautiful, mobile-first restaurant menu designed for customers to browse and prepare orders from their table.
 
-## Features
+## ✨ Features
 
-✨ **Categorized Menu** - Browse items by category (Appetizers, Mains, Pasta, Seafood, Desserts, Beverages)
+*   **Categorized Menu** - Easy navigation through appetizers, mains, and more.
+*   **My Order** - Customers can build a temporary order list.
+*   **Multi-Language** - English, Greek, and Italian support.
+*   **Themeable** - Change the entire look with one color variable.
+*   **Data Driven** - Menu items managed via simple JSON files.
 
-🛒 **My Order List** - Add items to a temporary order list for easy ordering
+## 🚀 Quick Start (Docker)
 
-🔢 **Quantity Controls** - Add multiple quantities of any item from menu cards or within your order
+1.  **Run the app:**
+    ```bash
+    docker-compose up
+    ```
+2.  **Open in browser:** `http://localhost:3000`
 
-🌍 **Multi-Language Support** - Switch between English and Greek (Italian coming soon)
+## 🎨 Customization
 
-📱 **Mobile-First Design** - Optimized for tablets and phones at restaurant tables
+### Change Theme Color
+Open `src/index.css` and change the `--theme-color` HEX code. The entire app (banners, buttons, interactions, and favicon) will update automatically!
 
-🎨 **Premium UI** - Elegant design with smooth, performance-optimized interactions
-
-🔍 **Dietary Information** - View dietary tags (vegetarian, gluten-free) and spicy levels
-
-⭐ **Popular Items** - Highlighted popular menu items
-
-⚡ **Performance Optimized** - Reduced animations for smooth experience on all devices
-
-## Local Development with Docker
-
-### Prerequisites
-- Docker Desktop installed and running
-
-### Running the App
-
-1. **Start the container:**
-   ```bash
-   docker-compose up
-   ```
-
-2. **Access the app:**
-   Open your browser and navigate to `http://localhost:3000`
-
-3. **Hot Reload:**
-   The app will automatically refresh when you make changes to the code
-
-4. **Stop the container:**
-   ```bash
-   docker-compose down
-   ```
-
-## GitHub Pages Deployment
-
-### Initial Setup
-
-1. **Update `vite.config.ts`:**
-   Change the `base` property to match your repository name:
-   ```typescript
-   base: '/your-repo-name/',
-   ```
-
-2. **Install dependencies** (run inside container or locally):
-   ```bash
-   npm install
-   ```
-
-### Deploy to GitHub Pages
-
-1. **Build the project:**
-   ```bash
-   npm run build
-   ```
-
-2. **Deploy:**
-   ```bash
-   npm run deploy
-   ```
-
-OR use the included GitHub Actions workflow (see `.github/workflows/deploy.yml`)
-
-### GitHub Actions Auto-Deploy
-
-Push to the `main` branch and GitHub Actions will automatically build and deploy to GitHub Pages.
-
-## Project Structure
-
-```
-menu/
-├── public/              # Static assets
-├── src/
-│   ├── components/      # React components
-│   │   ├── CategoryFilter.tsx
-│   │   ├── MenuItemCard.tsx
-│   │   └── MyOrder.tsx
-│   ├── data/           # Menu data
-│   │   └── menuData.ts
-│   ├── App.tsx         # Main app component
-│   ├── App.css         # App styles
-│   ├── index.css       # Global styles & design system
-│   ├── main.tsx        # Entry point
-│   └── types.ts        # TypeScript types
-├── Dockerfile          # Docker configuration
-├── docker-compose.yml  # Docker Compose setup
-└── package.json        # Dependencies
-```
-
-## Technology Stack
-
-- **React 18** - UI framework
-- **TypeScript** - Type safety
-- **Vite** - Build tool
-- **CSS** - Styling (no framework, pure CSS)
-- **Docker** - Local development
-- **GitHub Pages** - Hosting
-
-## Customization
-
-### Update Menu Items
-
-Edit `src/data/menuData.ts` to customize:
-- Categories
-- Menu items
-- Prices
-- Descriptions
-- Dietary information
-
-### Change Restaurant Name
-
-Update in `src/App.tsx`:
-```tsx
-<h1 className="restaurant-name">Your Restaurant Name</h1>
-```
-
-### Modify Colors
-
-Edit design tokens in `src/index.css`:
 ```css
 :root {
-  --accent-primary: #FF6B35;  /* Change primary color */
-  --accent-hover: #E85A28;    /* Change hover color */
-  /* ... */
+  --theme-color: #e06c0d; /* Your Brand Color */
 }
 ```
 
-## License
+### Edit Menu & Categories
+Data is stored in `src/data/`:
+*   **`items.json`**: Add/remove dishes, prices, and descriptions.
+*   **`categories.json`**: Manage menu categories.
+*   **`translations.ts`**: Update the Restaurant Name and UI texts.
 
-MIT License - Feel free to use this for your restaurant!
+## 📦 Deployment
+This app is ready for **GitHub Pages**. Push to `main` and the included workflow will handle the rest.
+
+## License
+Copyright © 2026. All Rights Reserved.
+This software is proprietary and may not be copied, modified, or distributed without explicit permission.

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import CategoryFilter from './components/CategoryFilter';
 import MenuItemCard from './components/MenuItemCard';
 import MyOrder from './components/MyOrder';
@@ -13,6 +13,19 @@ function App() {
     const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
     const [isOrderOpen, setIsOrderOpen] = useState(false);
     const [language, setLanguage] = useState<Language>('el');
+
+    useEffect(() => {
+        const themeColor = getComputedStyle(document.documentElement).getPropertyValue('--theme-color').trim();
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" rx="20" ry="20" fill="${themeColor}"/><text x="50" y="65" font-size="50" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-weight="bold">M</text></svg>`;
+        const link = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
+        if (link) {
+            link.href = `data:image/svg+xml;base64,${btoa(svg)}`;
+        }
+    }, [language]); // Re-running on language change is arbitrary, ideally should just happen on mount or theme change detection, but React component interaction works well enough.
+    // Better yet, just put it in a useEffect with no deps if the theme doesn't change at runtime, OR observe styles. Since we change theme manually in code, a simple run on mount is fine, but if we want it to react to manual css edits during dev, it might need more.
+    // Let's stick to a simple useEffect that runs once, as the theme is set in CSS. 
+    // Actually, `getComputedStyle` inside useEffect might read the value correctly.
+
 
     const t = translations[language];
 
@@ -111,18 +124,31 @@ function App() {
 
             {/* Menu Grid */}
             <main className="menu-container">
-                <div className="menu-grid">
-                    {filteredItems.map((item) => (
-                        <MenuItemCard
-                            key={item.id}
-                            item={item}
-                            quantity={getItemQuantity(item)}
-                            onAdd={addItemToOrder}
-                            onRemove={removeItemFromOrder}
-                            t={t}
-                        />
-                    ))}
-                </div>
+                {/* Render sections based on active category or all categories */}
+                {(activeCategory ? categories.filter(c => c.id === activeCategory) : categories).map(category => {
+                    const categoryItems = menuItems.filter(item => item.category === category.id);
+                    if (categoryItems.length === 0) return null;
+
+                    return (
+                        <div key={category.id} className="menu-section">
+                            <h2 className="section-title">
+                                {t.categories[category.id] || category.name}
+                            </h2>
+                            <div className="menu-grid">
+                                {categoryItems.map((item) => (
+                                    <MenuItemCard
+                                        key={item.id}
+                                        item={item}
+                                        quantity={getItemQuantity(item)}
+                                        onAdd={addItemToOrder}
+                                        onRemove={removeItemFromOrder}
+                                        t={t}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    );
+                })}
 
                 {filteredItems.length === 0 && (
                     <div className="no-items">

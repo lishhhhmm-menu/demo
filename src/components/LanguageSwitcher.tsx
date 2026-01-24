@@ -11,10 +11,10 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     currentLanguage,
     onLanguageChange
 }) => {
-    const languages: { code: Language; disabled?: boolean }[] = [
-        { code: 'en' },
-        { code: 'el' },
-        { code: 'it' },
+    const languages: { code: Language; label: string; disabled?: boolean }[] = [
+        { code: 'en', label: 'EN' },
+        { code: 'el', label: 'GR' },
+        { code: 'it', label: 'IT' },
     ];
 
     return (
@@ -27,7 +27,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
                     disabled={lang.disabled}
                     title={lang.disabled ? 'Coming soon' : ''}
                 >
-                    {lang.code.toUpperCase()}
+                    {lang.label}
                 </button>
             ))}
         </div>
