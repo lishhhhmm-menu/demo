@@ -14,7 +14,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     const languages: { code: Language; disabled?: boolean }[] = [
         { code: 'en' },
         { code: 'el' },
-        { code: 'it', disabled: true },
+        { code: 'it' },
     ];
 
     return (

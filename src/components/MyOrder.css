@@ -184,15 +184,19 @@
 
 .order-category-title {
     font-family: var(--font-heading);
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 700;
-    color: var(--text-primary);
-    margin: var(--space-sm) 0 var(--space-xs) 0;
-    padding-bottom: var(--space-xs);
-    border-bottom: 2px solid var(--bg-accent);
+    color: var(--accent-primary);
+    background: var(--bg-accent);
+    margin: var(--space-md) 0 var(--space-xs) 0;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     gap: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: none;
 }
 
 .order-category-group:first-child .order-category-title {

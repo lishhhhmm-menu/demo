@@ -117,9 +117,6 @@ const MyOrder: React.FC<MyOrderProps> = ({
                                     </button>
                                 </div>
 
-                                <div className="order-note">
-                                    <p>💡 <strong>{t.orderNote.split('?')[0]}?</strong> {t.orderNote.split('?')[1]}</p>
-                                </div>
                             </div>
                         </>
                     )}
