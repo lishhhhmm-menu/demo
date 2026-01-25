@@ -34,7 +34,7 @@
     display: flex;
     flex-direction: column;
     transform: translateY(100%);
-    transition: transform var(--transition-slow), visibility 0s linear var(--transition-slow);
+    transition: transform 0.4s ease, visibility 0s linear 0.4s;
     z-index: 1000;
     visibility: hidden;
     overflow: hidden;
@@ -43,7 +43,7 @@
 .my-order.open {
     transform: translateY(0);
     visibility: visible;
-    transition: transform var(--transition-slow), visibility 0s linear 0s;
+    transition: transform 0.4s ease, visibility 0s linear 0s;
 }
 
 /* Desktop styles */
@@ -367,20 +367,4 @@
     font-size: 0.9375rem;
     color: #1E40AF;
     line-height: 1.5;
-}
-
-@media (min-width: 768px) {
-    .my-order {
-        right: auto;
-        left: auto;
-        max-width: 400px;
-        right: var(--space-lg);
-        bottom: var(--space-lg);
-        border-radius: var(--radius-lg);
-        max-height: calc(100vh - var(--space-2xl) * 2);
-    }
-
-    .my-order.open {
-        animation: slideUp 0.3s var(--transition-base);
-    }
 }
