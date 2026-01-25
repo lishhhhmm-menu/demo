@@ -12,8 +12,8 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     onLanguageChange
 }) => {
     const languages: { code: Language; label: string; disabled?: boolean }[] = [
-        { code: 'en', label: 'EN' },
         { code: 'el', label: 'GR' },
+        { code: 'en', label: 'EN' },
         { code: 'it', label: 'IT' },
     ];
 

@@ -38,7 +38,10 @@ function App() {
         }
     });
     const [isOrderOpen, setIsOrderOpen] = useState(false);
-    const [language, setLanguage] = useState<Language>('el');
+    const [language, setLanguage] = useState<Language>(() => {
+        const savedLanguage = localStorage.getItem('restaurant-menu-language');
+        return (savedLanguage as Language) || 'el';
+    });
 
     // Save only necessary data (ID and quantity) to version control the order
     useEffect(() => {
@@ -48,6 +51,11 @@ function App() {
         }));
         localStorage.setItem('restaurant-menu-order', JSON.stringify(orderToSave));
     }, [orderItems]);
+
+    // Save language selection to localStorage
+    useEffect(() => {
+        localStorage.setItem('restaurant-menu-language', language);
+    }, [language]);
 
     useEffect(() => {
         const themeColor = getComputedStyle(document.documentElement).getPropertyValue('--theme-color').trim();
@@ -143,7 +151,10 @@ function App() {
         <div className="app">
             {/* Restaurant Title */}
             <div className="restaurant-header">
-                <h1 className="restaurant-name">{t.restaurantName}</h1>
+                <div className="restaurant-title-section">
+                    <h1 className="restaurant-name">{t.restaurantName}</h1>
+                    <p className="restaurant-type">{t.restaurantType}</p>
+                </div>
                 <LanguageSwitcher currentLanguage={language} onLanguageChange={setLanguage} />
             </div>
 

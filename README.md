@@ -35,6 +35,9 @@ Data is stored in `src/data/`:
 *   **`categories.json`**: Manage menu categories.
 *   **`translations.ts`**: Update the Restaurant Name and UI texts.
 
+### Reorder Language Options
+Open `src/components/LanguageSwitcher.tsx` (lines 14-18) and reorder the `languages` array to change button order.
+
 ## 📦 Deployment
 This app is ready for **GitHub Pages**. Push to `main` and the included workflow will handle the rest.
 

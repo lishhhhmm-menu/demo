@@ -24,6 +24,7 @@ export type Language = 'en' | 'el' | 'it';
 export interface Translations {
     restaurantName: string;
     restaurantTagline: string;
+    restaurantType: string;
     myOrder: string;
     items: string;
     item: string;

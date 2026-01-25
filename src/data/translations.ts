@@ -22,6 +22,7 @@ export const translations: Record<string, Translations> = {
     en: {
         restaurantName: 'Bella Tavola',
         restaurantTagline: 'Browse our menu and prepare your order',
+        restaurantType: 'Cafe Bar',
         myOrder: 'My Order',
         items: 'items',
         item: 'item',
@@ -47,6 +48,7 @@ export const translations: Record<string, Translations> = {
     el: {
         restaurantName: 'Bella Tavola',
         restaurantTagline: 'Περιηγηθείτε στο μενού και ετοιμάστε την παραγγελία σας',
+        restaurantType: 'Cafe Bar',
         myOrder: 'Η Παραγγελία μου',
         items: 'είδη',
         item: 'είδος',
@@ -72,6 +74,7 @@ export const translations: Record<string, Translations> = {
     it: {
         restaurantName: 'Bella Tavola',
         restaurantTagline: 'Sfoglia il nostro menu e prepara il tuo ordine',
+        restaurantType: 'Cafe Bar',
         myOrder: 'Il Mio Ordine',
         items: 'articoli',
         item: 'articolo',
