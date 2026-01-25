@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import CategoryFilter from './components/CategoryFilter';
 import MenuItemCard from './components/MenuItemCard';
 import MyOrder from './components/MyOrder';
@@ -9,7 +9,7 @@ import { MenuItem, OrderItem, Language } from './types';
 import './App.css';
 
 function App() {
-    const [activeCategory, setActiveCategory] = useState<string | null>(null);
+    const [categoryVisibility, setCategoryVisibility] = useState<Record<string, number>>({});
     const [orderItems, setOrderItems] = useState<OrderItem[]>(() => {
         try {
             const savedOrder = localStorage.getItem('restaurant-menu-order');
@@ -64,18 +64,54 @@ function App() {
         if (link) {
             link.href = `data:image/svg+xml;base64,${btoa(svg)}`;
         }
-    }, [language]); // Re-running on language change is arbitrary, ideally should just happen on mount or theme change detection, but React component interaction works well enough.
-    // Better yet, just put it in a useEffect with no deps if the theme doesn't change at runtime, OR observe styles. Since we change theme manually in code, a simple run on mount is fine, but if we want it to react to manual css edits during dev, it might need more.
-    // Let's stick to a simple useEffect that runs once, as the theme is set in CSS. 
-    // Actually, `getComputedStyle` inside useEffect might read the value correctly.
+    }, [language]);
 
+    // Calculate visibility percentage for each section
+    useEffect(() => {
+        const handleScroll = () => {
+            const visibilityMap: Record<string, number> = {};
+
+            categories.forEach(cat => {
+                const element = document.getElementById(`category-${cat.id}`);
+                if (!element) {
+                    visibilityMap[cat.id] = 0;
+                    return;
+                }
+
+                const rect = element.getBoundingClientRect();
+
+                // Account for sticky nav and bottom container
+                const stickyNavHeight = 80; // Approximate sticky nav height
+                const bottomContainerHeight = 70; // Approximate bottom container height
+                const actualViewportHeight = window.innerHeight - stickyNavHeight - bottomContainerHeight;
+
+                // Calculate how much of the actual visible area this section occupies
+                const visibleTop = Math.max(stickyNavHeight, rect.top);
+                const visibleBottom = Math.min(window.innerHeight - bottomContainerHeight, rect.bottom);
+                const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+                // Calculate percentage: reaches 100% if section fills visible area OR if entire section is visible
+                // Divide by whichever is smaller: actual viewport or section height
+                const referenceHeight = Math.min(actualViewportHeight, rect.height);
+                const visibilityPercent = referenceHeight > 0 ? Math.min(1, visibleHeight / referenceHeight) : 0;
+
+                visibilityMap[cat.id] = visibilityPercent;
+            });
+
+            setCategoryVisibility(visibilityMap);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+        handleScroll(); // Initial check
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);
+        };
+    }, [categories]);
 
     const t = translations[language];
-
-    const filteredItems = useMemo(() => {
-        if (!activeCategory) return menuItems;
-        return menuItems.filter(item => item.category === activeCategory);
-    }, [activeCategory]);
 
     const addItemToOrder = (item: MenuItem) => {
         setOrderItems(prev => {
@@ -162,21 +198,20 @@ function App() {
             <div className="sticky-nav">
                 <CategoryFilter
                     categories={categories}
-                    activeCategory={activeCategory}
-                    onCategoryChange={setActiveCategory}
+                    categoryVisibility={categoryVisibility}
                     t={t}
                 />
             </div>
 
             {/* Menu Grid */}
             <main className="menu-container">
-                {/* Render sections based on active category or all categories */}
-                {(activeCategory ? categories.filter(c => c.id === activeCategory) : categories).map(category => {
+                {/* Always render all categories */}
+                {categories.map(category => {
                     const categoryItems = menuItems.filter(item => item.category === category.id);
                     if (categoryItems.length === 0) return null;
 
                     return (
-                        <div key={category.id} className="menu-section">
+                        <div key={category.id} id={`category-${category.id}`} className="menu-section">
                             <h2 className="section-title">
                                 {t.categories[category.id] || category.name}
                             </h2>
@@ -196,11 +231,6 @@ function App() {
                     );
                 })}
 
-                {filteredItems.length === 0 && (
-                    <div className="no-items">
-                        <p>No items found in this category</p>
-                    </div>
-                )}
             </main>
 
             {/* Fixed Bottom Container - shows empty message or order button */}
