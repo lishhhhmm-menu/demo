@@ -16,8 +16,6 @@
 
   /* Derived Brands/Accents */
   --accent-primary: var(--theme-color);
-  --accent-primary-rgb: 224, 108, 13;
-  /* RGB values of #e06c0d for rgba() usage */
   --accent-hover: hsl(from var(--theme-color) h s calc(l - 10));
   --accent-light: hsl(from var(--theme-color) h s 95%);
 

@@ -66,6 +66,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
         <div className="category-filter" ref={navRef}>
             {categories.map((category) => {
                 const visibility = categoryVisibility[category.id] || 0;
+                const opacityPercent = Math.round(visibility * 100);
 
                 return (
                     <button
@@ -73,7 +74,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
                         data-category={category.id}
                         className="category-btn"
                         style={{
-                            backgroundColor: `rgba(var(--accent-primary-rgb), ${visibility})`,
+                            backgroundColor: `color-mix(in srgb, var(--accent-primary) ${opacityPercent}%, transparent)`,
                             color: visibility > 0.5 ? 'white' : 'var(--text-secondary)'
                         }}
                         onClick={() => scrollToCategory(category.id)}
