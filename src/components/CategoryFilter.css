@@ -65,9 +65,8 @@
 
 @media (min-width: 768px) {
     .category-filter {
-        justify-content: center;
-        flex-wrap: wrap;
-        overflow-x: visible;
+        justify-content: safe center;
+        overflow-x: auto;
     }
 
     .category-btn {
