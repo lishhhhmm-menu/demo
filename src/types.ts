@@ -25,6 +25,7 @@ export interface Translations {
     restaurantName: string;
     restaurantTagline: string;
     restaurantType: string;
+    menu: string;
     myOrder: string;
     items: string;
     item: string;

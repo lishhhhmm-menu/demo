@@ -113,6 +113,11 @@ function App() {
 
     const t = translations[language];
 
+    // Update document title based on current language
+    useEffect(() => {
+        document.title = `${t.restaurantName} ${t.menu} · ${t.restaurantType}`;
+    }, [language, t]);
+
     const addItemToOrder = (item: MenuItem) => {
         setOrderItems(prev => {
             const existingItem = prev.find(orderItem => orderItem.menuItem.id === item.id);
