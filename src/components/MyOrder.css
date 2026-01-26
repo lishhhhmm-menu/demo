@@ -166,10 +166,11 @@
 .order-items {
     flex: 1;
     padding: var(--space-md);
-    padding-bottom: 0;
+    padding-bottom: var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
+    background: var(--bg-primary);
 }
 
 .order-category-group {
@@ -213,7 +214,7 @@
     border: 2px solid transparent;
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs);
+    gap: var(--space-sm);
 }
 
 .order-item-name {
@@ -297,13 +298,17 @@
 }
 
 .order-footer {
+    position: sticky;
+    bottom: 0;
     padding: var(--space-md);
-    border-top: 1px solid var(--border-light);
-    background: var(--bg-primary);
+    background: hsl(from var(--bg-secondary) h s l / 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
+    z-index: 10;
 }
 
 .footer-actions {
@@ -319,7 +324,7 @@
     align-items: center;
     padding: var(--space-sm) var(--space-md);
     background: var(--bg-accent);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-full);
     border: 1px solid var(--border-light);
     height: 40px;
     box-sizing: border-box;
@@ -346,7 +351,7 @@
     padding: 0 var(--space-lg);
     background: transparent;
     border: 1px solid var(--border-light);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-full);
     font-family: var(--font-body);
     font-size: 0.875rem;
     font-weight: 600;

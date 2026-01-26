@@ -1,6 +1,6 @@
 .app {
     min-height: 100vh;
-    padding-bottom: calc(5rem);
+    padding-bottom: calc(2.5rem + 2 * var(--space-md));
 }
 
 .restaurant-header {
@@ -49,7 +49,6 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: var(--space-md);
-    padding-bottom: 0;
 }
 
 .menu-grid {
@@ -60,6 +59,10 @@
 
 .menu-section {
     margin-bottom: var(--space-lg);
+}
+
+.menu-section:last-child {
+    margin-bottom: 0;
 }
 
 .no-items {
@@ -90,12 +93,11 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 var(--space-md);
-    background: hsl(from var(--bg-primary) h s l / 0.95);
+    padding: var(--space-md) var(--space-md);
+    background: hsl(from var(--bg-secondary) h s l / 0.95);
     z-index: 500;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(8px);
@@ -116,7 +118,7 @@
     display: flex;
     align-items: center;
     gap: var(--space-sm);
-    padding: var(--space-md) var(--space-xl);
+    padding: var(--space-sm) var(--space-xl);
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover));
     color: white;
     border: none;
