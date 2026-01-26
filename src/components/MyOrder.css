@@ -140,6 +140,18 @@
     flex-direction: column;
 }
 
+/* Hide scrollbar on touch devices (mobile/tablet) where native scrolling is intuitive */
+@media (hover: none) and (pointer: coarse) {
+    .order-content::-webkit-scrollbar {
+        display: none;
+    }
+
+    .order-content {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
 .empty-order {
     flex: 1;
     display: flex;
@@ -202,7 +214,7 @@
 .category-items-list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: var(--space-md);
 }
 
 .order-item {
@@ -237,7 +249,7 @@
 .order-item-footer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     gap: var(--space-md);
     padding-top: 0;
 }
