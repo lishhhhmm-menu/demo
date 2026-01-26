@@ -71,6 +71,21 @@ function App() {
         const handleScroll = () => {
             const visibilityMap: Record<string, number> = {};
 
+            // Get dynamic heights of obstructive elements
+            const navElement = document.querySelector('.sticky-nav');
+            const bottomElement = document.querySelector('.bottom-container');
+
+            const navRect = navElement?.getBoundingClientRect();
+            const bottomRect = bottomElement?.getBoundingClientRect();
+
+            // The top obscuring line is the bottom of the nav (whether sticky or not)
+            const topObscured = navRect ? navRect.bottom : 0;
+            // The bottom obscuring line is the top of the bottom container
+            const bottomObscured = bottomRect ? window.innerHeight - bottomRect.height : window.innerHeight;
+
+            // Calculate effective available viewport height for content
+            const availableViewportHeight = bottomObscured - topObscured;
+
             categories.forEach(cat => {
                 const element = document.getElementById(`category-${cat.id}`);
                 if (!element) {
@@ -80,19 +95,20 @@ function App() {
 
                 const rect = element.getBoundingClientRect();
 
-                // Account for sticky nav and bottom container
-                const stickyNavHeight = 80; // Approximate sticky nav height
-                const bottomContainerHeight = 70; // Approximate bottom container height
-                const actualViewportHeight = window.innerHeight - stickyNavHeight - bottomContainerHeight;
-
-                // Calculate how much of the actual visible area this section occupies
-                const visibleTop = Math.max(stickyNavHeight, rect.top);
-                const visibleBottom = Math.min(window.innerHeight - bottomContainerHeight, rect.bottom);
+                // Calculate overlap between the element and the available viewport
+                const visibleTop = Math.max(topObscured, rect.top);
+                const visibleBottom = Math.min(bottomObscured, rect.bottom);
                 const visibleHeight = Math.max(0, visibleBottom - visibleTop);
 
-                // Calculate percentage: reaches 100% if section fills visible area OR if entire section is visible
-                // Divide by whichever is smaller: actual viewport or section height
-                const referenceHeight = Math.min(actualViewportHeight, rect.height);
+                // Calculate percentage:
+                // We compare the visible height to two things:
+                // 1. The element's total height (how much of the element is seen)
+                // 2. The available viewport height (how much of the screen it takes up)
+                // We take the max of these ratios to determine "active" status.
+                // Actually, the previous logic used min(available, rect.height) as denominator.
+                // If an element is taller than the viewport, and fills the viewport, it should be 1.0.
+
+                const referenceHeight = Math.min(availableViewportHeight, rect.height);
                 const visibilityPercent = referenceHeight > 0 ? Math.min(1, visibleHeight / referenceHeight) : 0;
 
                 visibilityMap[cat.id] = visibilityPercent;
