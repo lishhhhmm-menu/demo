@@ -59,7 +59,6 @@ const MyOrder: React.FC<MyOrderProps> = ({
                 <div className="order-content">
                     {items.length === 0 ? (
                         <div className="empty-order">
-                            <div className="empty-icon">📋</div>
                             <p className="empty-text">{t.emptyOrder}</p>
                             <p className="empty-subtext">{t.emptyOrderSubtext}</p>
                         </div>
@@ -79,6 +78,7 @@ const MyOrder: React.FC<MyOrderProps> = ({
                                                 {categoryItems.map((item) => (
                                                     <div key={item.menuItem.id} className="order-item">
                                                         <h4 className="order-item-name">{t.menuItems[item.menuItem.name]}</h4>
+                                                        <p className="order-item-description">{t.menuItems[`${item.menuItem.name}-desc`]}</p>
                                                         <div className="order-item-footer">
                                                             <span className="order-item-price">{item.menuItem.price.toFixed(2)} €</span>
                                                             <div className="order-qty-controls">
