@@ -233,6 +233,10 @@
     line-height: 1.2;
 }
 
+.order-item-title-text {
+    vertical-align: middle;
+}
+
 .order-item-description {
     color: var(--text-secondary);
     font-size: 0.875rem;

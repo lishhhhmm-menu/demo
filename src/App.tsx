@@ -42,6 +42,27 @@ function App() {
         const savedLanguage = localStorage.getItem('restaurant-menu-language');
         return (savedLanguage as Language) || 'el';
     });
+    const [viewingImage, setViewingImage] = useState<{ url: string; title: string; } | null>(null);
+
+    const handlePreviewImage = (url: string | null, title?: string) => {
+        if (url) {
+            setViewingImage({ url, title: title || '' });
+        } else {
+            setViewingImage(null);
+        }
+    };
+
+    // Prevent scrolling when image preview is open
+    useEffect(() => {
+        if (viewingImage) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [viewingImage]);
 
     // Save only necessary data (ID and quantity) to version control the order
     useEffect(() => {
@@ -245,6 +266,7 @@ function App() {
                                         onAdd={addItemToOrder}
                                         onRemove={removeItemFromOrder}
                                         t={t}
+                                        onPreviewImage={handlePreviewImage}
                                     />
                                 ))}
                             </div>
@@ -277,9 +299,20 @@ function App() {
                 onDecreaseQuantity={decreaseQuantity}
                 onClearAll={clearAllItems}
                 t={t}
+                onPreviewImage={handlePreviewImage}
             />
+
+            {/* Image Preview Modal */}
+            {viewingImage && (
+                <div className="image-preview-backdrop" onClick={() => setViewingImage(null)}>
+                    <div className="image-preview-container" onClick={(e) => e.stopPropagation()}>
+                        <img src={viewingImage.url} alt={viewingImage.title} className="preview-image" />
+                        <div className="preview-title">{viewingImage.title}</div>
+                    </div>
+                </div>
+            )}
         </div>
     );
-}
+};
 
 export default App;

@@ -6,6 +6,7 @@ export interface MenuItem {
     category: string;
     dietary?: string[];
     spicyLevel?: number;
+    image?: string;
 }
 
 export interface OrderItem {

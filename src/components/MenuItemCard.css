@@ -101,6 +101,10 @@
     line-height: 1.2;
 }
 
+.menu-item-title-text {
+    vertical-align: middle;
+}
+
 .menu-item-price {
     font-size: 0.875rem;
     font-weight: 600;

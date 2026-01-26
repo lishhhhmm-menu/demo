@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { OrderItem, Translations } from '../types';
 import { categories } from '../data/menuData';
+import OrderPanelItem from './OrderPanelItem';
 import './MyOrder.css';
 
 interface MyOrderProps {
@@ -11,6 +12,7 @@ interface MyOrderProps {
     onDecreaseQuantity: (itemId: string) => void;
     onClearAll: () => void;
     t: Translations;
+    onPreviewImage: (url: string | null, title?: string) => void;
 }
 
 const MyOrder: React.FC<MyOrderProps> = ({
@@ -20,7 +22,8 @@ const MyOrder: React.FC<MyOrderProps> = ({
     onIncreaseQuantity,
     onDecreaseQuantity,
     onClearAll,
-    t
+    t,
+    onPreviewImage
 }) => {
     const totalPrice = items.reduce((sum, item) => sum + (item.menuItem.price * item.quantity), 0);
     const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -76,36 +79,21 @@ const MyOrder: React.FC<MyOrderProps> = ({
                                             </h3>
                                             <div className="category-items-list">
                                                 {categoryItems.map((item) => (
-                                                    <div key={item.menuItem.id} className="order-item">
-                                                        <h4 className="order-item-name">{t.menuItems[item.menuItem.name]}</h4>
-                                                        <p className="order-item-description">{t.menuItems[`${item.menuItem.name}-desc`]}</p>
-                                                        <div className="order-item-footer">
-                                                            <span className="order-item-price">{item.menuItem.price.toFixed(2)} €</span>
-                                                            <div className="order-qty-controls">
-                                                                <button
-                                                                    className="order-qty-btn minus"
-                                                                    onClick={() => onDecreaseQuantity(item.menuItem.id)}
-                                                                    aria-label="Decrease quantity"
-                                                                >
-                                                                    −
-                                                                </button>
-                                                                <span className="order-qty-display">{item.quantity}</span>
-                                                                <button
-                                                                    className="order-qty-btn plus"
-                                                                    onClick={() => onIncreaseQuantity(item.menuItem.id)}
-                                                                    aria-label="Increase quantity"
-                                                                >
-                                                                    +
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <OrderPanelItem
+                                                        key={item.menuItem.id}
+                                                        item={item}
+                                                        t={t}
+                                                        onIncrease={onIncreaseQuantity}
+                                                        onDecrease={onDecreaseQuantity}
+                                                        onPreviewImage={onPreviewImage}
+                                                    />
                                                 ))}
                                             </div>
                                         </div>
                                     );
                                 })}
                             </div>
+
 
                             <div className="order-footer">
                                 <div className="footer-actions">

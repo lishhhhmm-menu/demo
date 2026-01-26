@@ -15,4 +15,5 @@ export const menuItems: MenuItem[] = unifiedMenuItems.map(item => ({
     category: item.category,
     dietary: item.dietary,
     spicyLevel: item.spicyLevel,
+    image: item.image,
 }));

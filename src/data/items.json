@@ -6,6 +6,7 @@
         "dietary": [
             "vegetarian"
         ],
+        "image": "https://placehold.co/300x600",
         "translations": {
             "en": {
                 "name": "Bruschetta Trio",
@@ -25,6 +26,7 @@
         "id": "app-2",
         "price": 14.00,
         "category": "appetizers",
+        "image": "https://placehold.co/600x600",
         "translations": {
             "en": {
                 "name": "Calamari Fritti",
@@ -414,6 +416,7 @@
         "id": "bev-1",
         "price": 5.00,
         "category": "beverages",
+        "image": "https://placehold.co/600x400",
         "translations": {
             "en": {
                 "name": "Fresh Squeezed Lemonade",
@@ -490,6 +493,7 @@
         "id": "bev-5",
         "price": 5.50,
         "category": "beverages",
+        "image": "https://placehold.co/600x400",
         "translations": {
             "en": {
                 "name": "Cappuccino",

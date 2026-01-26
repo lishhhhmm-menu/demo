@@ -13,6 +13,7 @@ export interface UnifiedItem {
     category: string;
     dietary?: string[];
     spicyLevel?: number;
+    image?: string;
     translations: {
         en: ItemTranslation;
         el: ItemTranslation;
